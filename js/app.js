@@ -89,10 +89,10 @@ function finished() {
 
 function startTimer() {
   sec = 0;
-  timer.textContent = sec;
+  timer.textContent = sec+'s';
   time = setInterval(() => {
     sec++;
-    timer.textContent = sec;
+    timer.textContent = sec+'s';
   }, 1000);
 }
 
