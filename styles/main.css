@@ -1,6 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 :root {
-  --ff: font-family: "Roboto", sans-serif;
+  --ff: "Poppins", sans-serif;
+  --cursive: "Pacifico", cursive;
+}
+
+body {
+  background-color: whitesmoke;
 }
 
 * {
@@ -8,9 +14,33 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .container {
   max-width: 80%;
   margin: 2em auto;
+}
+.container nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1em;
+  margin-bottom: 2em;
+  text-align: right;
+  align-items: center;
+  color: black;
+  font-family: var(--ff);
+  letter-spacing: 2px;
+}
+.container nav a:hover {
+  font-weight: 600;
+}
+.container nav .logo {
+  text-align: center;
+  font-family: var(--cursive);
+  font-size: 50px;
 }
 .container .display-text {
   border: 1px solid black;
@@ -18,7 +48,7 @@
   font-family: var(--ff);
   font-size: x-large;
   margin-bottom: 2em;
-  line-height: 25px;
+  line-height: 30px;
   word-spacing: 5px;
 }
 .container .display-text .correct {
@@ -31,16 +61,36 @@
 }
 .container .controls {
   display: flex;
-  border: 1px solid black;
-}
-.container .timer {
-  font-family: var(--ff);
-  font-size: x-large;
-  margin: 2em auto;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  border: 2px solid skyblue;
+  margin: 1em auto;
+}
+.container .controls button {
+  background: transparent;
   padding: 1em;
-  border-radius: 50%;
+  margin: 0.5em;
+  font-size: 1.3rem;
+  box-shadow: -4px 5px 0 black;
+}
+.container .controls button:hover {
+  background-color: black;
+  color: white;
+}
+.container .main {
+  display: flex;
+  width: 60%;
+  margin: 0 auto;
+}
+.container .timer {
+  font-family: var(--ff);
+  font-size: large;
+  padding: 1em;
+  border: 1px solid black;
+  margin: 0;
+}
+.container #input {
+  padding: 1em;
+  font-size: large;
+  width: 100%;
 }/*# sourceMappingURL=main.css.map */

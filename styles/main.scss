@@ -1,7 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 
 :root {
-    --ff: font-family: 'Roboto', sans-serif;
+  --ff: 'Poppins', sans-serif;
+  --cursive: 'Pacifico', cursive;
+}
+
+body {
+  background-color: whitesmoke;
 }
 
 * {
@@ -9,9 +16,39 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .container {
   max-width: 80%;
   margin: 2em auto;
+
+  nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em;
+    margin-bottom: 2em;
+    text-align: right;
+    align-items: center;
+
+    color: black;
+    font-family: var(--ff);
+    letter-spacing: 2px;
+
+
+
+    a:hover {
+      font-weight: 600;
+    }
+
+    .logo {
+      text-align: center;
+      font-family: var(--cursive);
+      font-size: 50px;
+    }
+  }
 
   .display-text {
     border: 1px solid black;
@@ -19,30 +56,57 @@
     font-family: var(--ff);
     font-size: x-large;
     margin-bottom: 2em;
-    line-height: 25px;
+    line-height: 30px;
     word-spacing: 5px;
 
     .correct {
-        color: green;
+      color: green;
     }
+
     .incorrect {
-        color: red;
-        text-decoration: underline red($color: #000000);
+      color: red;
+      text-decoration: underline red($color: #000000);
     }
+
   }
 
   .controls {
     display: flex;
-    border: 1px solid black;
+    width: fit-content;
+    margin: 1em auto;
+
+    button {
+      background: transparent;
+      padding: 1em;
+      margin: .5em;
+      font-size: 1.3rem;
+      box-shadow: -4px 5px 0 black;
+    }
+
+    button:hover {
+      background-color: black;
+      color: white;
+    }
   }
 
-  .timer {
-    font-family: var(--ff);
-    font-size: x-large;
-    margin: 2em auto;
-    width: fit-content;
-    border: 2px solid skyblue;
-    padding: 1em;
-    border-radius: 50%;
+  .main {
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
   }
+
+  .timer{
+    font-family: var(--ff);
+    font-size: large;
+    padding: 1em;
+    border: 1px solid black;
+    margin: 0;
+  }
+
+  #input {
+    padding: 1em;
+    font-size: large;
+    width: 100%;
+  }
+
 }
