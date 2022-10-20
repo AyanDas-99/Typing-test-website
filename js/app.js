@@ -94,7 +94,12 @@ function startTimer() {
 function calculateSpeed(time, numberOfWords) {
   const mins = time / 60;
   const wpm = Math.floor(numberOfWords / mins);
-  timer.textContent = wpm + " WPM";
+  const showWpm = document.createElement('h3');
+  showWpm.textContent = wpm+" WPM";
+  displayText.textContent = '';
+  displayText.appendChild(showWpm);
+  displayText.style.width = 'fit-content'
+  displayText.style.margin = '2em auto'
 }
 
 
