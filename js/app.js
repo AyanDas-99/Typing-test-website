@@ -75,6 +75,7 @@ function setDisplayText() {
 // Stops the timer and runs calculate speed.
 function finished() {
   input.value = "";
+  input.disabled = true;
   clearInterval(time);
   console.log(strings[nthString].split(" ").length);
   calculateSpeed(sec, strings[nthString].split(" ").length);
