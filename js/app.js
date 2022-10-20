@@ -4,11 +4,19 @@ const timer = document.querySelector(".timer");
 const nextBtn = document.querySelector('#next');
 const retryBtn = document.querySelector('#retry');
 
-let nthString = 0; // The index of string to be typed
+let nthString = getNthString(); // The index of string to be typed
 let isTimerOn = false;
 let time; // set interval object
 let sec; // stores the number of seconds passed
 
+// get nthString variable from localStorage
+function getNthString() {
+  if(localStorage.getItem('index') == null){
+    localStorage.setItem('index', '0');
+  }
+  const val = localStorage.getItem('index');
+  return JSON.parse(val);
+}
 
 // Typing data
 const strings = [
@@ -31,7 +39,6 @@ input.addEventListener("input", () => {
   let flag;
   characterSpan.forEach((character, index) => {
     if (input.value[index] == null) {
-      console.log(input.value[index]);
       character.classList.remove("correct");
       character.classList.remove("incorrect");
       flag = false;
@@ -55,6 +62,7 @@ setDisplayText();
 // Set the typing data in the display
 // Each letter inside it's separate span
 function setDisplayText() {
+  displayText.innerHTML = ''
   const stringArray = strings[nthString].split("");
   stringArray.forEach((character) => {
     const span = document.createElement("span");
@@ -91,6 +99,18 @@ function calculateSpeed(time, numberOfWords) {
 
 // Go to next test
 function next() {
-  nthString++;
-
+  if(nthString<5) {
+    localStorage.setItem('index', JSON.stringify(nthString+1));
+  }else {
+    localStorage.setItem('index','0');
+  }
+  navigation.reload();
 }
+
+// retry the same string
+function retry() {
+  navigation.reload();
+}
+
+nextBtn.addEventListener('click', next);
+retryBtn.addEventListener('click', retry)
