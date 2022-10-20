@@ -1,5 +1,5 @@
 # Basic Typing Test Website
-[Typist](/images/favicon.ico)
+[Typist](/images/favicon.png)
 ## Introduction
 *Short and fast way to test your WPM typing speed.*
 
