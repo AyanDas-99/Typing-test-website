@@ -1,7 +1,8 @@
 const displayText = document.querySelector(".display-text");
 const input = document.querySelector("#input");
-const retry = document.querySelector("#retry");
 const timer = document.querySelector(".timer");
+const nextBtn = document.querySelector('#next');
+const retryBtn = document.querySelector('#retry');
 
 let nthString = 0; // The index of string to be typed
 let isTimerOn = false;
@@ -85,4 +86,11 @@ function calculateSpeed(time, numberOfWords) {
   const mins = time / 60;
   const wpm = Math.floor(numberOfWords / mins);
   timer.textContent = wpm + " WPM";
+}
+
+
+// Go to next test
+function next() {
+  nthString++;
+
 }

@@ -29,6 +29,10 @@
   -webkit-text-decoration: underline 0;
           text-decoration: underline 0;
 }
+.container .controls {
+  display: flex;
+  border: 1px solid black;
+}
 .container .timer {
   font-family: var(--ff);
   font-size: x-large;
