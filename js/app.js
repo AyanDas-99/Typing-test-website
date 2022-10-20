@@ -8,10 +8,11 @@ let nthString = getNthString(); // The index of string to be typed
 let isTimerOn = false;
 let time; // set interval object
 let sec; // stores the number of seconds passed
+let incorrectLetters = 0; // number of times incorect letter typed
 
 // get nthString variable from localStorage
 function getNthString() {
-  if(localStorage.getItem('index') == null){
+  if (localStorage.getItem('index') == null) {
     localStorage.setItem('index', '0');
   }
   const val = localStorage.getItem('index');
@@ -50,12 +51,17 @@ input.addEventListener("input", () => {
       flag = false;
       character.classList.add("incorrect");
       character.classList.remove("correct");
+      incorrectLetters++;
     }
   });
   if (flag) {
     finished();
   }
 });
+
+// Next and retry button even listeners
+nextBtn.addEventListener('click', next);
+retryBtn.addEventListener('click', retry)
 
 setDisplayText();
 
@@ -78,7 +84,7 @@ function finished() {
   input.disabled = true;
   clearInterval(time);
   console.log(strings[nthString].split(" ").length);
-  calculateSpeed(sec, strings[nthString].split(" ").length);
+  calculate(sec, strings[nthString].split(" ").length, incorrectLetters, strings[nthString].length);
 }
 
 function startTimer() {
@@ -91,24 +97,33 @@ function startTimer() {
 }
 
 // Calculate the WPM speed and display.
-function calculateSpeed(time, numberOfWords) {
+function calculate(time, numberOfWords, incorrectLetterCount, numberOfLetters) {
   const mins = time / 60;
   const wpm = Math.floor(numberOfWords / mins);
+
+  const correctLetters = numberOfLetters - incorrectLetterCount;
+  const accuracy = Math.floor((correctLetters * 100) / numberOfLetters);
+
   const showWpm = document.createElement('h3');
-  showWpm.textContent = wpm+" WPM";
+  showWpm.textContent = wpm + " WPM";
   displayText.textContent = '';
   displayText.appendChild(showWpm);
+  const showAccuracy = document.createElement('h3');
+  showAccuracy.textContent = accuracy+"% Accuracy";
+  displayText.appendChild(showAccuracy);
   displayText.style.width = 'fit-content'
   displayText.style.margin = '2em auto'
+
+
 }
 
 
 // Go to next test
 function next() {
-  if(nthString<5) {
-    localStorage.setItem('index', JSON.stringify(nthString+1));
-  }else {
-    localStorage.setItem('index','0');
+  if (nthString < 5) {
+    localStorage.setItem('index', JSON.stringify(nthString + 1));
+  } else {
+    localStorage.setItem('index', '0');
   }
   navigation.reload();
 }
@@ -117,6 +132,3 @@ function next() {
 function retry() {
   navigation.reload();
 }
-
-nextBtn.addEventListener('click', next);
-retryBtn.addEventListener('click', retry)
